@@ -33,7 +33,7 @@ Table of Contents
 # clone repo
 mkdir -p ~/repos
 cd ~/repos
-git clone git@code.opennodecloud.com:waldur-docker/waldur-mastermind.git
+git clone git@github.com:opennode/waldur-mastermind-docker.git
 
 # build image
 cd waldur-mastermind
