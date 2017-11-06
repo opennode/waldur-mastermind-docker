@@ -56,7 +56,7 @@ Prepare environment:
 # clone repo
 mkdir -p ~/repos
 cd ~/repos
-git clone git@code.opennodecloud.com:waldur-docker/waldur-mastermind.git
+git clone git@github.com:opennode/waldur-mastermind-docker.git
 cd ~/repos/waldur-mastermind
 
 # create rc file
