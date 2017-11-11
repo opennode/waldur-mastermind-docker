@@ -4,7 +4,7 @@ MAINTAINER Andres Toomsalu <andres@opennodecloud.com>
 LABEL 	summary="Waldur Mastermind Docker Image" \
 	name="opennode/waldur-mastermind" \
     	vendor="OpenNode" \
-    	license="GPLv2" \
+    	license="MIT" \
     	version="2.8" \
 	release="0" \
 	maintainer="Andres Toomsalu <andres@opennodecloud.com>" \
