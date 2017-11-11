@@ -4,7 +4,7 @@ MAINTAINER Andres Toomsalu <andres@opennodecloud.com>
 LABEL 	summary="Waldur Mastermind Docker Image" \
 	name="opennode/waldur-mastermind" \
     	vendor="OpenNode" \
-    	license="GPLv2" \
+    	license="MIT" \
     	version="2.8" \
 	release="0" \
 	maintainer="Andres Toomsalu <andres@opennodecloud.com>" \
@@ -37,7 +37,7 @@ RUN cd /tmp && \
 # Install mastermind
 ENV container docker
 RUN yum -y install \
-  centos-release-openstack-ocata \
+  centos-release-openstack-pike \
   epel-release \
   https://download.postgresql.org/pub/repos/yum/9.6/redhat/rhel-7-x86_64/pgdg-centos96-9.6-3.noarch.rpm \
   http://opennodecloud.com/centos/7/waldur-release.rpm \
