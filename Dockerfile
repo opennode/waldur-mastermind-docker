@@ -1,11 +1,15 @@
 FROM 	centos:centos7
+MAINTAINER Andres Toomsalu <andres@opennodecloud.com>
+
 LABEL 	summary="Waldur Mastermind Docker Image" \
 	name="opennode/waldur-mastermind" \
     	vendor="OpenNode" \
     	license="GPLv2" \
     	version="2.7" \
 	release="4" \
-	maintainer="Andres Toomsalu <andres@opennodecloud.com>"
+	maintainer="Andres Toomsalu <andres@opennodecloud.com>" \
+        description="Waldur Cloud Brokerage Platform" \
+        url="https://waldur.com"
 
 # Add tini
 ENV TINI_VERSION v0.16.1
