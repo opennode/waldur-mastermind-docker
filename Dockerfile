@@ -1,4 +1,4 @@
-FROM 	centos:centos7
+FROM 	registry.access.redhat.com/rhel7
 MAINTAINER Andres Toomsalu <andres@opennodecloud.com>
 
 LABEL 	summary="Waldur Mastermind Docker Image" \
@@ -34,21 +34,28 @@ RUN cd /tmp && \
   chmod +x /usr/local/bin/gosu && \
   rm gosu.asc
 
+COPY rootfs /
+
 # Install mastermind
 ENV container docker
-RUN yum -y install \
-  centos-release-openstack-ocata \
-  epel-release \
-  https://download.postgresql.org/pub/repos/yum/9.6/redhat/rhel-7-x86_64/pgdg-centos96-9.6-3.noarch.rpm \
-  http://opennodecloud.com/centos/7/waldur-release.rpm \
-  && yum -y --setopt=tsflags=nodocs install \
-  crudini \
-  jq \
-  python2-httpie \
-  waldur-mastermind \
-  && yum clean all
+RUN REPOLIST=rhel-7-server-rpms,rhel-7-server-optional-rpms,rhel-7-server-extras-rpms,rhel-7-server-openstack-11-rpms,epel,pgdg96,waldur && \
+  yum -y update-minimal --disablerepo "*" --enablerepo rhel-7-server-rpms --setopt=tsflags=nodocs \
+    --security --sec-severity=Important --sec-severity=Critical && \
+  curl -o epel-release-latest-7.noarch.rpm -SL https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm \
+    --retry 5 --retry-max-time 0 -C - && \
+  yum -y localinstall epel-release-latest-7.noarch.rpm && rm -f epel-release-latest-7.noarch.rpm && \
+  yum -y install \
+    https://download.postgresql.org/pub/repos/yum/9.6/redhat/rhel-7-x86_64/pgdg-redhat96-9.6-3.noarch.rpm \
+    https://opennodecloud.com/centos/7/waldur-release.rpm && \
+  yum -y install --disablerepo "*" --enablerepo ${REPOLIST} --setopt=tsflags=nodocs \
+    golang-github-cpuguy83-go-md2man \
+    crudini \
+    jq \
+    python2-httpie \
+    waldur-mastermind && \
+  go-md2man -in /tmp/help.md -out /help.1 && \
+  yum clean all
 
-COPY rootfs /
 
 ENTRYPOINT ["/app-entrypoint.sh"]
 CMD ["/bin/bash"]
