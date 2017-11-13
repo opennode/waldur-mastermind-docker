@@ -34,7 +34,12 @@ RUN cd /tmp && \
   chmod +x /usr/local/bin/gosu && \
   rm gosu.asc
 
-COPY rootfs /
+# Adding files
+COPY rootfs/etc/waldur /etc/waldur
+COPY rootfs/app-entrypoint.sh /
+COPY rootfs/tmp/help.md /tmp/
+COPY rootfs/licenses /licenses
+COPY rootfs/usr/local/bin /usr/local/bin
 
 # Install mastermind
 ENV container docker
