@@ -36,7 +36,7 @@ cd ~/repos
 git clone git@github.com:opennode/waldur-mastermind-docker.git
 
 # build image
-cd waldur-mastermind
+cd waldur-mastermind-docker
 make build
 
 # push image to docker hub
@@ -57,7 +57,7 @@ Prepare environment:
 mkdir -p ~/repos
 cd ~/repos
 git clone git@github.com:opennode/waldur-mastermind-docker.git
-cd ~/repos/waldur-mastermind
+cd ~/repos/waldur-mastermind-docker
 
 # create rc file
 echo $( head -c32 /dev/urandom | base64 ) > ~/waldur_secret.key
