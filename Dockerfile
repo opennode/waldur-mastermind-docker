@@ -43,7 +43,7 @@ COPY rootfs/usr/local/bin /usr/local/bin
 
 # Install mastermind
 ENV container docker
-RUN REPOLIST=rhel-7-server-rpms,rhel-7-server-optional-rpms,rhel-7-server-extras-rpms,rhel-7-server-openstack-11-rpms,epel,pgdg96,waldur && \
+RUN REPOLIST=rhel-7-server-rpms,rhel-7-server-optional-rpms,rhel-7-server-extras-rpms,rhel-7-server-openstack-13-rpms,epel,pgdg96,waldur && \
   yum-config-manager --disable rhel-7-server-htb-rpms && \
   yum -y update-minimal --disablerepo "*" --enablerepo rhel-7-server-rpms --setopt=tsflags=nodocs \
     --security --sec-severity=Important --sec-severity=Critical && \
