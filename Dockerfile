@@ -53,7 +53,7 @@ RUN REPOLIST=rhel-7-server-rpms,rhel-7-server-optional-rpms,rhel-7-server-extras
   yum -y install \
     https://download.postgresql.org/pub/repos/yum/9.6/redhat/rhel-7-x86_64/pgdg-redhat96-9.6-3.noarch.rpm \
     https://opennodecloud.com/centos/7/waldur-release.rpm && \
-  yum -y install --disablerepo "*" --enablerepo ${REPOLIST} --setopt=tsflags=nodocs \
+  yum -y install --disablerepo "*" --enablerepo ${REPOLIST} --setopt=tsflags=nodocs --exclude=python2-croniter \
     golang-github-cpuguy83-go-md2man \
     crudini \
     jq \
